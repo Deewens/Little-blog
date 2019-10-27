@@ -1,0 +1,7 @@
+.space {
+	margin-top: 15px;
+}
+
+.animate {
+    animation: animatezoom 0.6s
+}
