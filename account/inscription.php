@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			echo $emptyFieldsAlert; 
 			echo $errorFieldNotSetAlert;
 			?>
-			<form method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+			<form method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" id="create-account-form">
 				<div class="form-row">
 					<div class="form-group col-md-6">
 			    		<label for="nom">Nom</label>
@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 			  	<div class="form-group">
 			    	<label for="pseudo">Pseudo</label>
-			    	<input type="text" class="form-control" placeholder="Entrez votre pseudo" name="pseudo" id="pseudo" aria-describedby="pseudoError" value="<?php echo $pseudo; ?>">
+			    	<input type="text" class="form-control" placeholder="Entrez votre pseudo" name="pseudo" id="pseudo" aria-describedby="pseudoError" value="<?php echo $pseudo; ?>" oninput="testPseudo(this)">
 			    	<small id="pseudoError" class="form-text text-danger" role="alert"><?php echo $pseudoError; ?></small>
 			  	</div>
 			  	<div class="form-group">
@@ -169,6 +169,38 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			  		<button type="submit" class="btn btn-primary">Inscription</button>
 			</form>
 		</div>
+
+		<script type="text/javascript">
+			let httpRequest = new XMLHttpRequest();
+			function testPseudo(field) {
+				if(!httpRequest) {
+					alert('Erreur : impossible de créer une instance XMLHTTP.');
+					return false;
+				}
+
+				httpRequest.onreadystatechange = displayContents;
+			    httpRequest.open('POST', 'inscription_ajax.php');
+			    httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			    httpRequest.send('pseudo=' + encodeURIComponent(field.value));
+			}
+
+			function displayContents() {
+			    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+			    	if (httpRequest.status === 200) {
+			      		var response = JSON.parse(httpRequest.responseText);
+			      		if(response.pseudoExist) {
+			      			document.getElementById('pseudoError').innerHTML = "Ce pseudo existe déjà. Vous devez en choisir un autre.";
+			      		}
+			      		else {
+			      			document.getElementById('pseudoError').innerHTML = "";
+			      		}
+			    	} 
+			    	else {
+			      		alert('Un problème est survenu avec la requête.');
+			    	}
+			  	}
+			}
+		</script>
 	</body>
 </html>
 
