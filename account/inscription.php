@@ -158,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			  	<div class="form-group">
 			    	<label for="password">Mot de passe</label>
 			    	<input type="password" class="form-control" placeholder="Entrez votre mot de passe" name="password" id="password" aria-describedby="passwordHelpBlock passwordError">
-			    	<small id="passwordHelpBlock" class="form-text text-muted">Votre mot de passe doit comporter 8 caractères au minimum.</small>
+			    	<small id="passwordHelpBlock" class="form-text text-muted">Votre mot de passe devrait comporter 8 caractères au minimum, des chiffres et des caractères spéciaux.</small>
 			    	<small id="passwordError" class="form-text text-danger"></small>
 			  	</div>
 			  	<div class="form-group">
