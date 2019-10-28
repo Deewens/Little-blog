@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			  	</div>
 			  	<div class="form-group">
 			    	<label for="email">E-mail</label>
-			    	<input type="email" class="form-control" placeholder="Entrez votre adresse e-mail" name="email" id="email" aria-describedby="emailError" value="<?php echo $email; ?>">
+			    	<input type="email" class="form-control" placeholder="Entrez votre adresse e-mail" name="email" id="email" aria-describedby="emailError" value="<?php echo $email; ?>" oninput="testEmail(this)">
 			    	<small id="emailError" class="form-text text-danger" role="alert"><?php echo $emailError; ?></small>
 			  	</div>
 			  	<div class="form-group">
@@ -172,33 +172,52 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 		<script type="text/javascript">
 			let httpRequest = new XMLHttpRequest();
-			function testPseudo(field) {
-				if(!httpRequest) {
-					alert('Erreur : impossible de créer une instance XMLHTTP.');
-					return false;
-				}
+			if(!httpRequest) {
+				alert('Erreur : impossible de créer une instance XMLHTTP.');
+			}
 
-				httpRequest.onreadystatechange = displayContents;
-			    httpRequest.open('POST', 'inscription_ajax.php');
+			function testPseudo(field) {
+				httpRequest.onreadystatechange = function() {
+					if (httpRequest.readyState === XMLHttpRequest.DONE) {
+				    	if (httpRequest.status === 200) {
+				      		var response = JSON.parse(httpRequest.responseText);
+				      		if(response.pseudoExist) {
+				      			document.getElementById('pseudoError').innerHTML = "Ce pseudo existe déjà. Vous devez en choisir un autre.";
+				      		}
+				      		else {
+				      			document.getElementById('pseudoError').innerHTML = "";
+				      		}
+				    	} 
+				    	else {
+				      		alert('Un problème est survenu avec la requête AJAX. Contactez l\'administrateur du site pour régler le problème');
+				    	}
+			  		}
+			  	};
+			    httpRequest.open('POST', 'testPseudo_ajax.php');
 			    httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 			    httpRequest.send('pseudo=' + encodeURIComponent(field.value));
 			}
 
-			function displayContents() {
-			    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-			    	if (httpRequest.status === 200) {
-			      		var response = JSON.parse(httpRequest.responseText);
-			      		if(response.pseudoExist) {
-			      			document.getElementById('pseudoError').innerHTML = "Ce pseudo existe déjà. Vous devez en choisir un autre.";
-			      		}
-			      		else {
-			      			document.getElementById('pseudoError').innerHTML = "";
-			      		}
-			    	} 
-			    	else {
-			      		alert('Un problème est survenu avec la requête.');
-			    	}
-			  	}
+			function testEmail(field) {
+				httpRequest.onreadystatechange = function() {
+					if (httpRequest.readyState === XMLHttpRequest.DONE) {
+				    	if (httpRequest.status === 200) {
+				      		var response = JSON.parse(httpRequest.responseText);
+				      		if(response.emailExist) {
+				      			document.getElementById('emailError').innerHTML = "Un utilisateur est déjà inscrit avec cette adresse e-mail. Merci d'en choisir une autre.";
+				      		}
+				      		else {
+				      			document.getElementById('emailError').innerHTML = "";
+				      		}
+				    	} 
+				    	else {
+				      		alert('Un problème est survenu avec la requête AJAX. Contactez l\'administrateur du site pour régler le problème');
+				    	}
+				  	}
+				};
+			    httpRequest.open('POST', 'testEmail_ajax.php');
+			    httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			    httpRequest.send('email=' + encodeURIComponent(field.value));
 			}
 		</script>
 	</body>
