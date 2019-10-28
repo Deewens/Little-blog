@@ -155,33 +155,34 @@ $blog_stmt->execute();
           </div>
       </div>
       <?php } ?>
+
+        <script type="text/javascript">
+        function showReponse() {
+        let form = document.getElementById("reply-form");
+        let btn = document.getElementById("btn-rep");
+        if(form.style.display == "none") {
+          form.style.display = "block";
+          btn.innerHTML = "Annuler";
+        } else {
+          form.style.display = "none";
+          btn.innerHTML = "Répondre";
+        }
+      }
+
+      function canSend(field) {
+        let button = document.getElementById("submit");
+        if(field.value) {
+          button.disabled = false;
+          button.title = "Ajouter le commentaire"
+        }
+        else {
+          button.disabled = true;
+          button.title = "Votre message ne peut être vide !";
+        }
+      }
+      </script>
     </body>
 </html>
-<script type="text/javascript">
-    function showReponse() {
-    let form = document.getElementById("reply-form");
-    let btn = document.getElementById("btn-rep");
-    if(form.style.display == "none") {
-      form.style.display = "block";
-      btn.innerHTML = "Annuler";
-    } else {
-      form.style.display = "none";
-      btn.innerHTML = "Répondre";
-    }
-  }
-
-  function canSend(field) {
-    let button = document.getElementById("submit");
-    if(field.value) {
-      button.disabled = false;
-      button.title = "Ajouter le commentaire"
-    }
-    else {
-      button.disabled = true;
-      button.title = "Votre message ne peut être vide !";
-    }
-  }
-</script>
 <?php 
 
 // PHP Functions
