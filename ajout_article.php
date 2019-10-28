@@ -29,7 +29,7 @@
 			}
 
 
-			$titredouble = $pdo->prepare("SELECT TitreSujet FROM Sujet WHERE TitreSujet = ?");
+			$titredouble = $pdo->prepare("SELECT TitreSujet FROM sujet WHERE TitreSujet = ?");
 			$titredouble->bindValue(1, $titre, PDO::PARAM_STR);
 			$titredouble->execute();
 

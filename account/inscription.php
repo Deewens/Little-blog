@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$confirmPasswordError = "Les deux mots de passes ne correspondent pas.";
 		}
 
-		$emaildouble = $pdo->prepare("SELECT COUNT(*) FROM Redacteur WHERE AdresseMail = ?");
+		$emaildouble = $pdo->prepare("SELECT COUNT(*) FROM redacteur WHERE AdresseMail = ?");
 		$emaildouble->bindValue(1, $email, PDO::PARAM_STR);
 		$emaildouble->execute();
 
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$emailError = "Un utilisateur est déjà inscrit avec cette adresse e-mail. Merci d'en choisir une autre.";
 		}
 
-		$pseudodouble = $pdo->prepare("SELECT COUNT(*) FROM Redacteur WHERE Pseudo = ?");
+		$pseudodouble = $pdo->prepare("SELECT COUNT(*) FROM redacteur WHERE Pseudo = ?");
 		$pseudodouble->bindValue(1, $pseudo, PDO::PARAM_STR);
 		$pseudodouble->execute();
 

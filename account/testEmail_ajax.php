@@ -4,7 +4,7 @@ include("../pdo/pdo.php");
 
 $emailExist = false;
 
-$emaildouble = $pdo->prepare("SELECT COUNT(*) FROM Redacteur WHERE AdresseMail = ?");
+$emaildouble = $pdo->prepare("SELECT COUNT(*) FROM redacteur WHERE AdresseMail = ?");
 $emaildouble->bindValue(1, $_POST['email'], PDO::PARAM_STR);
 $emaildouble->execute();
 

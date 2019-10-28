@@ -4,7 +4,7 @@ include("../pdo/pdo.php");
 
 $pseudoExist = false;
 
-$pseudodouble = $pdo->prepare("SELECT COUNT(*) FROM Redacteur WHERE Pseudo = ?");
+$pseudodouble = $pdo->prepare("SELECT COUNT(*) FROM redacteur WHERE Pseudo = ?");
 $pseudodouble->bindValue(1, $_POST['pseudo'] , PDO::PARAM_STR);
 $pseudodouble->execute();
 
