@@ -4,7 +4,7 @@
 
 > Screenshots available below
 
-A simplest minimal blog template made without framework, with HTML/CSS, PHP, MySQL, Javascript.
+A simplest minimal blog template made with HTML/CSS, Bootstrap, PHP, MySQL, Javascript.
 
 ## Features
 * Account system (log in, log out, sign in)
@@ -21,7 +21,7 @@ A simplest minimal blog template made without framework, with HTML/CSS, PHP, MyS
 
 > Screenshots disponible plus bas
 
-Un simple template de blog développé sans framework à l'aide des langages HTML/CSS, PHP, MySQL, Javascript.
+Un simple template de blog développé à l'aide des langages HTML/CSS, PHP, MySQL, Javascript et de Bootstrap.
 
 ## Fonctionnalités
 * Système de compte (Connexion, déconnexion, inscription)
