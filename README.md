@@ -1,36 +1,23 @@
 # Little blog
 
-> English version (Version française plus bas)
+Little Blog is a blog site that can be used as a modifiable "template", developed using PHP and MySQL for the backend, and HTML/CSS and JS for the layout, using Bootstrap 4 as CSS framework.
 
-> Screenshots available below
-
-A simplest minimal blog template made with HTML/CSS, Bootstrap, PHP, MySQL, Javascript.
+This project was carried out for the Web programming module course of my studies. Its final goal was to teach us how to create a dynamic website.
 
 ## Features
-* Account system (log in, log out, sign in)
-* Add new post
-* Comments system
+Little Blog is a site where you can post articles and comment on others' articles, if you are logged in.
+
+Features are as follows:
+* Registration and login system
+* A logged-in user can create an article
+* A logged-in user can post a comment on an article
+* Security of data processing and data storage, including storage of user password
 
 ## Authors
-* Deewens
+* Deewens (Me)
 * Arthur (https://github.com/Arthur57255)
 
 ---
-
-> Version française
-
-> Screenshots disponible plus bas
-
-Un simple template de blog développé à l'aide des langages HTML/CSS, PHP, MySQL, Javascript et de Bootstrap.
-
-## Fonctionnalités
-* Système de compte (Connexion, déconnexion, inscription)
-* Ajout d'un nouvel article
-* Système de commentaires
-
-## Auteurs
-* Deewens
-* Arthur (https://github.com/Arthur57255)
 
 # Screenshots
 
