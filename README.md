@@ -1,6 +1,6 @@
 # Little blog
 
-Little Blog is a blog site that can be used as a modifiable "template", developed using PHP and MySQL for the backend, and HTML/CSS and JS for the layout, using Bootstrap 4 as CSS framework.
+Little Blog is a blog site that allow logged in users to create blog post. Developed using PHP and MySQL for the backend, and HTML/CSS and JS for the layout and using Bootstrap 4 as CSS framework.
 
 This project was carried out for the Web programming module course of my studies. Its final goal was to teach us how to create a dynamic website.
 
